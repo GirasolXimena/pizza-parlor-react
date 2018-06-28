@@ -32,10 +32,11 @@ class Menu extends Component {
   
   render() {
     let menu = this.props.reduxStore.pizzaReducer.menu || [] ;
+    let total = this.props.reduxStore.pizzaReducer.order_total || 0;
     return (
       <div className="menu">
        <h1 className="stepName">Step 1: Select Your Pizza</h1>
-       <h2 className="orderTotal">Order total: {JSON.stringify(this.props.reduxStore.pizzaReducer.order_total)}</h2>
+       <h2 className="orderTotal">Order total: ${total.toFixed(2)}</h2>
         <MenuItems menu={menu} />
         {/* <Cart /> */}
       </div>
