@@ -1,18 +1,25 @@
 import React, { Component } from 'react';
+import {HashRouter as Router, Route} from 'react-router-dom';
 import './App.css';
 import Checkout from '../Checkout/Checkout';
 
+// Components
+import Menu from '../Menu/Menu';
+import Customer from '../Customer/Customer';
+import Checkout from '../Checkout/Checkout';
+
 class App extends Component {
-  render() {
+
+  render(){
     return (
       <div className="App">
-        <header className="App-header">
-          <h1 className="App-title">Prime Pizza</h1>
-        </header>
-        <br/>
-        <img src="images/pizza_photo.png" alt="spicy pizza"/>
-        <p>Pizza is great.</p>
-        <Checkout />
+        <Router>
+          <div>
+            <Route exact path='/' component={Menu}/>
+            <Route exact path='/customer' component={Customer}/>
+            <Route exact path='/checkout' component={Checkout}/>
+          </div>
+        </Router>
       </div>
     );
   }

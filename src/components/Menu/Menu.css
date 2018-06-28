@@ -1,0 +1,17 @@
+.container{
+  margin: 0 auto;
+}
+
+.menu{
+  margin: auto 20px;
+  width: 100%;
+  /* display: grid;
+  grid-template-columns: repeat(20, 1fr);
+  grid-template-rows: repeat(20, 1fr); */
+}
+
+.menu-items {
+  /* width: 100%;
+  height: 100%;
+  grid-area: 1/0/21/15; */
+}
