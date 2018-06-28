@@ -11,9 +11,14 @@ import FormControl from '@material-ui/core/FormControl';
 import Button from '@material-ui/core/Button/Button';
 import Input from '@material-ui/core/Input/Input';
 import {withStyles} from '@material-ui/core';
+import Header from '../Header/Header';
 
 // Styles
 import {styles} from './styles';
+
+const mapReduxStateToProps = ({pizzaReducer}) => ({
+    pizzaReducer
+});
 
 class Customer extends Component {
 
@@ -25,7 +30,8 @@ class Customer extends Component {
       street_address: '',
       city: '',
       zip: 0,
-      type: ''    }
+      type: ''    
+    }
   }
 
   handleInputChange = (event) => {
@@ -61,11 +67,8 @@ class Customer extends Component {
   render(){
     const { classes } = this.props;
     return (
-      <div className="App">
-        <header className="App-header">
-          <h1 className="App-title">Prime Pizza</h1>
-        </header>
-        <br/>
+      <div>
+        <Header />
         <div className={classes.customerInputForm} noValidate autoComplete='off'>
           <Input
             id="name"
@@ -117,5 +120,5 @@ class Customer extends Component {
 
 export default compose(
   withStyles(styles),
-  connect()
+  connect(mapReduxStateToProps)
 )(Customer);
