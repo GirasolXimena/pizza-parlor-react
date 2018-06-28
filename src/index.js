@@ -14,6 +14,52 @@ const pizzaReducer = (state = {}, action) => {
             ...state,
             menu: action.payload
         }
+    } else if(action.type === 'ADD_TO_CART'){
+        console.log('adding to cart');
+        let currentMenu = state.menu;
+        let idToChange = currentMenu.findIndex(item => {
+            return item._id === action.payload;
+        })
+        currentMenu[idToChange].quantity = currentMenu[idToChange].quantity + 1;
+        let itemsInCart = currentMenu
+            .filter(item => {
+                return item.quantity > 0;
+            });
+        let total = 0;
+        for(let item of itemsInCart){
+            total += (item.cost * item.quantity);
+        }
+        return {
+            ...state,
+            menu: [
+                ...currentMenu
+            ],
+            order_total: total
+        }
+    } else if(action.type === 'DELETE_FROM_CART'){
+        console.log('deleting from cart');
+        let currentMenu = state.menu;
+        let idToChange = currentMenu.findIndex(item => {
+            return item._id === action.payload;
+        })
+        if(currentMenu[idToChange].quantity > 0){
+            currentMenu[idToChange].quantity = 0;
+        }
+        let itemsInCart = currentMenu
+            .filter(item => {
+                return item.quantity > 0;
+            });
+        let total = 0;
+        for(let item of itemsInCart){
+            total += (item.cost * item.quantity);
+        }
+        return {
+            ...state,
+            menu: [
+                ...currentMenu
+            ],
+            order_total: total
+        }
     } else {
         return state;
     }

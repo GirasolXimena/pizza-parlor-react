@@ -10,7 +10,6 @@ const mapReduxStateToProps = reduxStore => ({
 })
 
 class Menu extends Component {
-  
   componentDidMount(){
     this.getPizzaMenu();
   }
@@ -19,7 +18,11 @@ class Menu extends Component {
     axios.get('/api/pizza')
     .then(response => {
       console.log('back from the API with, ', response.data);
-      const action = {type: 'ADD', payload: response.data};
+      let menuItems = response.data;
+      for(let item of menuItems){
+        item.quantity = 0;
+      }
+      const action = {type: 'ADD', payload: menuItems};
       this.props.dispatch(action)
     })
     .catch(error => {
@@ -32,6 +35,7 @@ class Menu extends Component {
     return (
       <div className="menu">
        <h1>Step 1: Select Your Pizza</h1>
+       <h2>Order total: {JSON.stringify(this.props.reduxStore.pizzaReducer.order_total)}</h2>
         <Grid container spacing={24}>
           {menu.map(menuItem => <MenuItem key={menuItem._id} menuItem={menuItem}/>) }
         </Grid>

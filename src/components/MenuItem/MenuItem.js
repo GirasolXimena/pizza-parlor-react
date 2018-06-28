@@ -14,15 +14,29 @@ import Typography from '@material-ui/core/Typography';
 import red from '@material-ui/core/colors/red';
 import Grid from '@material-ui/core/Grid';
 import './MenuItem.css';
+import { connect } from 'react-redux';
+
+const mapReduxStateToProps = reduxStore => ({
+  reduxStore
+})
 
 class MenuItem extends Component {
+  addItemToCart = () => {
+    const action = {type: 'ADD_TO_CART', payload: this.props.menuItem._id};
+    this.props.dispatch(action);
+  }
+
+  removeAllFromCart = () => {
+    const action = {type: 'DELETE_FROM_CART', payload: this.props.menuItem._id};
+    this.props.dispatch(action);
+  }
+  
   render() {
     let item = this.props.menuItem;
     return (
       <Grid item xl={1} lg={2} md={3} sm={4} xs={12}>
         <div>
-          <Card style={{width: '200px', height: '400px'}}>
-            <CardMedia />
+          <Card style={{width: '200px', height: '600px'}}>
               <div className="frame-square" onClick={this.toggleDescription}>
                 <div className="crop">
                   <div>
@@ -48,8 +62,11 @@ class MenuItem extends Component {
                 {item.description}
               </Typography>
             </CardContent>
-            <CardActions disableActionSpacing>
-              {}
+            <CardActions onClick={this.addItemToCart} disableActionSpacing>
+              {<p>add to cart</p>}
+            </CardActions>
+            <CardActions onClick={this.removeAllFromCart} disableActionSpacing>
+              {(item.quantity > 0) &&  <p>remove all from cart</p>}
             </CardActions>
           </Card>
         </div>
@@ -58,4 +75,4 @@ class MenuItem extends Component {
   }
 }
 
-export default MenuItem;
+export default connect(mapReduxStateToProps)(MenuItem);
