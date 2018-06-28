@@ -11,7 +11,7 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import {MuiThemeProvider, createMuiTheme} from '@material-ui/core/styles';
+import {createMuiTheme} from '@material-ui/core/styles';
 
 const CustomTableCell = withStyles(theme => ({
     head: {
@@ -86,6 +86,7 @@ class Checkout extends Component {
         }
     }
 
+
     submitOrder = () => {
         console.log('click');
         
@@ -107,7 +108,8 @@ class Checkout extends Component {
         axios.post('/api/order', body)
         .then((response ) => {
             console.log(response);
-            alert('Order confirmed, thank you for ordering,', this.state.customer.name)
+            alert('Order confirmed, thank you for ordering,', this.state.customer.name);
+
             
         })
         
