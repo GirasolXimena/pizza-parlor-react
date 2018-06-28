@@ -63,7 +63,7 @@ const pizzaReducer = (state = {}, action) => {
     } else {
         return state;
     }
-
+}
 const customerReducer = (state = {}, action) => {
     if(action.type === 'ADD_CUSTOMER'){
         return action.payload;
@@ -73,7 +73,7 @@ const customerReducer = (state = {}, action) => {
 
 const storeInstance = createStore(
     combineReducers({
-        pizzaReducer
+        pizzaReducer,
         customerReducer
     }),
     applyMiddleware(logger)
