@@ -63,12 +63,20 @@ const pizzaReducer = (state = {}, action) => {
     } else {
         return state;
     }
+
+const customerReducer = (state = {}, action) => {
+    if(action.type === 'ADD_CUSTOMER'){
+        return action.payload;
+    }
+    return state;
 }
 
 const storeInstance = createStore(
     combineReducers({
         pizzaReducer
+        customerReducer
     }),
+    applyMiddleware(logger)
 );
 
 ReactDOM.render(<Provider store={storeInstance}><App /></Provider>, document.getElementById('root'));
