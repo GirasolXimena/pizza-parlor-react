@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import {HashRouter as Router, Route} from 'react-router-dom';
 import './App.css';
-import Checkout from '../Checkout/Checkout';
 
 // Components
 import Menu from '../Menu/Menu';

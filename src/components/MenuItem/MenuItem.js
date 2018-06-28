@@ -45,12 +45,12 @@ class MenuItem extends Component {
                 </div>
               </div>
             <CardContent>
-              <div class="content">
+              <div className="content">
                 <Typography gutterBottom variant="title" component="h4">
                   {item.name}
                 </Typography>
               </div>
-              <div class="content">
+              <div className="content">
                 <Typography gutterBottom>
                   {item.description}
                 </Typography>

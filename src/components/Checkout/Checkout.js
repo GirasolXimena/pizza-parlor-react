@@ -88,7 +88,7 @@ class Checkout extends Component {
             <div>
                 <h1>Prime Pizza</h1>
                 <h3>Step 3: Checkout</h3>
-                <h3>{this.state.type}</h3>
+                <h3>{this.props.customerReducer.type}</h3>
             <p>
                 {this.state.customer.name}<br />
                 {this.state.customer.street_address}<br />
