@@ -49,41 +49,10 @@ const mapReduxStateToProps = (reduxStore) => ({
 });
 
 class Checkout extends Component {
-    state = {
-    customer: {
-            name: "Jake Tovsen",
-            street_address: "415 Lake Street",
-            city: 'Minneapolis',
-            zip: '55413'
-        },
-    pizza: [{
-            // _id: 69,
-            name: 'Pineapple Pizza',
-            description: 'Love pineapple pizza',
-            cost: "420.00",
-            quantity: 1
-    },  {          
-            // _id: 70,
-            name: 'Pepperoni Pizza',
-            description: 'Love pepperoni pizza',
-            cost: "50.00",
-            quantity: 1
-    }],
-    type: 'Pickup',
-    order_total: 0
-}
-    componentDidMount() {
-        
-        console.log(this.state.pizza);
 
-        let total = 0;
-        let radix;
-        for (let pizza of this.state.pizza) { 
-            total += parseInt(pizza.cost, radix);   
-            this.setState({
-            order_total: total
-            })
-        }
+    componentDidMount() {
+        console.log('hello');
+        
     }
 
 
@@ -91,18 +60,18 @@ class Checkout extends Component {
         console.log('click');
         
         // fake data body
-        const body = {
-            customer: this.state.customer, 
-            pizzas: this.state.pizza, 
-            order_total: this.state.order_total,
-            type: this.state.type }
+        // const body = {
+        //     customer: this.state.customer, 
+        //     pizzas: this.state.pizza, 
+        //     order_total: this.state.order_total,
+        //     type: this.state.type }
 
         // real data body
-        // const body = {
-        //     customer: this.props.customerReducer.customer, 
-        //     pizzas: this.props.pizzaReducer.pizza, 
-        //     order_total: this.props.pizzaReducer.order_total,
-        //     type: this.props.customerReducer.type }
+        const body = {
+            customer: this.props.customerReducer.customer, 
+            pizzas: this.props.pizzaReducer.pizza, 
+            order_total: this.props.pizzaReducer.order_total,
+            type: this.props.customerReducer.type }
         console.log(body);
         
         axios.post('/api/order', body)
