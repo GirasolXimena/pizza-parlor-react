@@ -1,0 +1,32 @@
+
+.container{
+  margin: 0 auto;
+}
+.menu{
+  margin: auto 20px;
+  width: 100%;
+}
+.crop {
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+.buttons{
+  postion: absolute;
+  bottom: 0;
+  min-height: 150px;
+  max-height: 150px;
+}
+.content {
+  min-height: 50px;
+  max-height: 50px;
+}
+.card {
+  width: 200px;
+  height: 400px;
+  display: 'flex';
+}
+.img {
+  width: 200px;
+  display: flex;
+}
