@@ -45,6 +45,7 @@ router.post('/', (req, res) => {
     // pizzaOrder should match the OrderSchema format
     const order = new Orders(pizzaOrder);
     order.save().then((result) => {
+        res.send(result);
         res.sendStatus(201);
     }).catch((error) => {
         console.log('Error POST /api/order', error);

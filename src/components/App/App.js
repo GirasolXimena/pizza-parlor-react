@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import './App.css';
+import Checkout from '../Checkout/Checkout';
 
 class App extends Component {
   render() {
@@ -10,8 +10,9 @@ class App extends Component {
           <h1 className="App-title">Prime Pizza</h1>
         </header>
         <br/>
-        <img src="images/pizza_photo.png"/>
+        <img src="images/pizza_photo.png" alt="spicy pizza"/>
         <p>Pizza is great.</p>
+        <Checkout />
       </div>
     );
   }
