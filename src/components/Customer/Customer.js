@@ -29,7 +29,7 @@ class Customer extends Component {
       name: '',
       street_address: '',
       city: '',
-      zip: 0,
+      zip: '',
       type: ''    
     }
   }
@@ -46,7 +46,7 @@ class Customer extends Component {
         this.setState({city: event.target.value});
         break;
       case 'zip':
-        this.setState({zip: event.target.value});
+        this.setState({zip: Number(event.target.value)});
         break;
       case 'pickup':
         this.setState({type: event.target.value});
@@ -69,6 +69,7 @@ class Customer extends Component {
     return (
       <div>
         <Header />
+        <div className={classes.main}>
         <div className={classes.customerInputForm} noValidate autoComplete='off'>
           <Input
             id="name"
@@ -103,7 +104,7 @@ class Customer extends Component {
           <FormControl component="fieldset" required className={classes.formControl}>
             <RadioGroup
               className={classes.methodGroup}
-              value={this.state.method}
+              value={this.state.type}
             >
               <FormControlLabel value="Pickup" control={<Radio id='pickup' onClick={this.handleInputChange}/>} label="Pickup" />
               <FormControlLabel value="Delivery" control={<Radio id='delivery' onClick={this.handleInputChange}/>} label="Delivery" />
@@ -112,6 +113,7 @@ class Customer extends Component {
         </div>
         <div>
           <Button className={classes.nextButton}onClick={this.submitCustomerInfo}><Link to='/checkout'>Next</Link></Button>
+        </div>
         </div>
       </div>
     );

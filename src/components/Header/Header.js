@@ -6,6 +6,8 @@ import {styles} from './styles';
 
 // Mat-UI Imports
 import Typography from '@material-ui/core/Typography/Typography';
+import AppBar from '@material-ui/core/AppBar/AppBar';
+import Icon from '@material-ui/core/Icon/Icon';
 
 const mapReduxStateToProps = ({pizzaReducer}) => ({
     pizzaReducer
@@ -15,13 +17,13 @@ class Header extends Component {
     render(){
         const {classes} = this.props;
         return(
-            <div className={classes.header}>
+            <AppBar className={classes.header}>
                 <Typography className={classes.projectTitle} variant="display3">Prime Pizza</Typography>
                 <div className={classes.cartContainer}>
-                    <img src="../../../cart.png"/> {/* Might be wrong... */}
-                    <Typography variant="display1">{this.props.pizzaReducer.order_total}</Typography>
+                    <Icon>shopping_cart</Icon>
+                    <p>{this.props.pizzaReducer.order_total == 0 ? 0 : this.props.pizzaReducer.order_total}</p>
                 </div>
-            </div>
+            </AppBar>
         );
     }
 }
