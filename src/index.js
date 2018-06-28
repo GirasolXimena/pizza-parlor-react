@@ -8,6 +8,9 @@ import {Provider} from 'react-redux';
 import {logger} from 'redux-logger';
 
 const customerReducer = (state = {}, action) => {
+    if(action.type === 'ADD_CUSTOMER'){
+        return action.payload;
+    }
     return state;
 }
 

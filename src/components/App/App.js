@@ -5,14 +5,10 @@ import { compose } from 'redux';
 import {Link} from 'react-router-dom'; 
 
 // Material-UI imports
-import TextField from '@material-ui/core/TextField/TextField';
 import Radio from '@material-ui/core/Radio/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup/RadioGroup';
-import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
-import FormLabel from '@material-ui/core/FormLabel';
-import FormGroup from '@material-ui/core/FormGroup/FormGroup';
 import Button from '@material-ui/core/Button/Button';
 import Input from '@material-ui/core/Input/Input';
 import {withStyles} from '@material-ui/core';
@@ -21,9 +17,6 @@ import {withStyles} from '@material-ui/core';
 import {styles} from './styles';
 import './App.css';
 
-const mapReduxStateToProps = (reduxStore) => {
-  reduxStore
-}
 class App extends Component {
 
   constructor(){
@@ -34,9 +27,7 @@ class App extends Component {
       street_address: '',
       city: '',
       zip: 0,
-      method: '',
-      selectedValue: ''
-    }
+      type: ''    }
   }
 
   handleInputChange = (event) => {
@@ -54,10 +45,10 @@ class App extends Component {
         this.setState({zip: event.target.value});
         break;
       case 'pickup':
-        this.setState({method: event.target.value, selectedValue: event.target.value});
+        this.setState({type: event.target.value});
         break;
       case 'delivery':
-        this.setState({method: event.target.value, selectedValue: event.target.value});
+        this.setState({type: event.target.value});
         break;
       default:
         console.log('Invalid field');
@@ -66,8 +57,7 @@ class App extends Component {
   }
 
   submitCustomerInfo = () => {
-    // this.props.dispatch('/customerInfo', this.state.customer);
-    console.log(this.state);
+    this.props.dispatch({type: 'ADD_CUSTOMER', payload: this.state});
   }
 
   render(){
@@ -118,13 +108,13 @@ class App extends Component {
               className={classes.methodGroup}
               value={this.state.method}
             >
-              <FormControlLabel value="pickup" control={<Radio id='pickup' onClick={this.handleInputChange}/>} label="Pickup" />
-              <FormControlLabel value="delivery" control={<Radio id='delivery' onClick={this.handleInputChange}/>} label="Delivery" />
+              <FormControlLabel value="Pickup" control={<Radio id='pickup' onClick={this.handleInputChange}/>} label="Pickup" />
+              <FormControlLabel value="Delivery" control={<Radio id='delivery' onClick={this.handleInputChange}/>} label="Delivery" />
             </RadioGroup>
           </FormControl>
         </div>
         <div>
-          <Button className={classes.nextButton}onClick={this.submitCustomerInfo}>Next</Button>
+          <Button className={classes.nextButton}onClick={this.submitCustomerInfo}></Button>
         </div>
       </div>
     );
@@ -133,5 +123,5 @@ class App extends Component {
 
 export default compose(
   withStyles(styles),
-  connect(mapReduxStateToProps)
+  connect()
 )(App);
