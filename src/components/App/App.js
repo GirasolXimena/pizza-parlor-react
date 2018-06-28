@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import Menu from '../Menu/Menu';
 import './App.css';
 
 class App extends Component {
@@ -9,9 +10,8 @@ class App extends Component {
         <header className="App-header">
           <h1 className="App-title">Prime Pizza</h1>
         </header>
-        <br/>
-        <img src="images/pizza_photo.png"/>
         <p>Pizza is great.</p>
+        <Menu />
       </div>
     );
   }

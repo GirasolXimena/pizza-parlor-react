@@ -1,0 +1,14 @@
+.testbox{
+  background-color: blue;
+  height: 300px;
+  width: 150px;
+}
+
+.container{
+  margin: 0 auto;
+}
+
+.menu{
+  margin: auto 20px;
+  width: 100%;
+}
