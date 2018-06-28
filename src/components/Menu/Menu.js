@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import Grid from '@material-ui/core/Grid';
-import MenuItem from '../MenuItem/MenuItem'
 import { connect } from 'react-redux';
+import MenuItems from '../MenuItems/MenuItems';
+import Cart from '../Cart/Cart';
 import './Menu.css';
 
 const mapReduxStateToProps = reduxStore => ({
@@ -34,11 +34,10 @@ class Menu extends Component {
     let menu = this.props.reduxStore.pizzaReducer.menu || [] ;
     return (
       <div className="menu">
-       <h1>Step 1: Select Your Pizza</h1>
-       <h2>Order total: {JSON.stringify(this.props.reduxStore.pizzaReducer.order_total)}</h2>
-        <Grid container spacing={24}>
-          {menu.map(menuItem => <MenuItem key={menuItem._id} menuItem={menuItem}/>) }
-        </Grid>
+       <h1 className="stepName">Step 1: Select Your Pizza</h1>
+       <h2 className="orderTotal">Order total: {JSON.stringify(this.props.reduxStore.pizzaReducer.order_total)}</h2>
+        <MenuItems menu={menu} />
+        {/* <Cart /> */}
       </div>
     );
   }
