@@ -12,6 +12,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import {createMuiTheme} from '@material-ui/core/styles';
+import { Redirect } from "react-router-dom";
 
 
 const CustomTableCell = withStyles(theme => ({
@@ -50,44 +51,55 @@ const mapReduxStateToProps = (reduxStore) => ({
 });
 
 class Checkout extends Component {
-
-    componentDidMount() {
-        console.log('hello');
-        console.log(this.props.reduxStore);
-        console.log(this.props.reduxStore.pizzaReducer);
+   state = {
+       orderComplete: false
+   }
+       
+       componentDidMount() {
+           console.log('hello');
+           console.log(this.props.reduxStore);
+           console.log(this.props.reduxStore.pizzaReducer);
+           
+           
+        }
         
         
-    }
-
-
-    submitOrder = () => {
-        console.log('click');
-        
-        // fake data body
-        // const body = {
-        //     customer: this.state.customer, 
-        //     pizzas: this.state.pizza, 
-        //     order_total: this.state.order_total,
-        //     type: this.state.type }
-
-        // real data body
-        const body = {
-            customer: this.props.reduxStore.customerReducer.customer, 
-            pizzas: this.props.reduxStore.pizzaReducer.pizza, 
-            order_total: this.props.reduxStore.pizzaReducer.order_total,
-            type: this.props.reduxStore.customerReducer.type }
-        console.log(body);
-        
-        axios.post('/api/order', body)
-        .then((response ) => {
-            console.log(response);
-            alert('Order confirmed, thank you for ordering,', this.props.reduxStore.customerReducer.name);
-
+        submitOrder = () => {
+            console.log('click');
             
-        })
-        
-    }
+            // fake data body
+            // const body = {
+                //     customer: this.state.customer, 
+                //     pizzas: this.state.pizza, 
+                //     order_total: this.state.order_total,
+                //     type: this.state.type }
+                
+                // real data body
+                const body = {
+                    customer: this.props.reduxStore.customerReducer.customer, 
+                    pizzas: this.props.reduxStore.pizzaReducer.pizza, 
+                    order_total: this.props.reduxStore.pizzaReducer.order_total,
+                    type: this.props.reduxStore.customerReducer.type }
+                    console.log(body);
+                    
+                    axios.post('/api/order', body)
+                    .then((response ) => {
+                        console.log(response);
+                        alert('Order confirmed, thank you for ordering,', this.props.reduxStore.customerReducer.name);
+                        this.setState({
+                            orderComplete: true
+                        });
+                    })
+                    
+                }
+                       
+                    
     render() { 
+        const {orderComplete} = this.state;
+        if (orderComplete) {
+            return <Redirect to='/'/>
+        }
+
         return ( 
             <div>
                 <h1>Prime Pizza</h1>
@@ -106,6 +118,8 @@ class Checkout extends Component {
                         <TableRow>
                             <CustomTableCell>Name</CustomTableCell>
                             <CustomTableCell>Cost</CustomTableCell>
+                            <CustomTableCell>Quantity</CustomTableCell>
+                            <CustomTableCell>Change Order</CustomTableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
