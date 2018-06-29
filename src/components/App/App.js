@@ -6,12 +6,14 @@ import './App.css';
 import Menu from '../Menu/Menu';
 import Customer from '../Customer/Customer';
 import Checkout from '../Checkout/Checkout';
+import Header from '../Header/Header';
 
 class App extends Component {
 
   render(){
     return (
       <div className="App">
+        <Header />
         <Router>
           <div>
             <Route exact path='/' component={Menu}/>

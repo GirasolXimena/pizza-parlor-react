@@ -11,8 +11,7 @@ import FormControl from '@material-ui/core/FormControl';
 import Button from '@material-ui/core/Button/Button';
 import Input from '@material-ui/core/Input/Input';
 import {withStyles} from '@material-ui/core';
-import Header from '../Header/Header';
-
+import Typography from '@material-ui/core/Typography/Typography';
 // Styles
 import {styles} from './styles';
 
@@ -29,7 +28,7 @@ class Customer extends Component {
       name: '',
       street_address: '',
       city: '',
-      zip: 0,
+      zip: '',
       type: ''    
     }
   }
@@ -46,7 +45,7 @@ class Customer extends Component {
         this.setState({city: event.target.value});
         break;
       case 'zip':
-        this.setState({zip: event.target.value});
+        this.setState({zip: Number(event.target.value)});
         break;
       case 'pickup':
         this.setState({type: event.target.value});
@@ -68,7 +67,9 @@ class Customer extends Component {
     const { classes } = this.props;
     return (
       <div>
-        <Header />
+        {/* <Header /> */}
+        <div className={classes.main}>
+        <Typography variant="display1" className={classes.title}>Step 2: Customer Information</Typography>
         <div className={classes.customerInputForm} noValidate autoComplete='off'>
           <Input
             id="name"
@@ -103,15 +104,16 @@ class Customer extends Component {
           <FormControl component="fieldset" required className={classes.formControl}>
             <RadioGroup
               className={classes.methodGroup}
-              value={this.state.method}
+              value={this.state.type}
             >
-              <FormControlLabel value="Pickup" control={<Radio id='pickup' onClick={this.handleInputChange}/>} label="Pickup" />
-              <FormControlLabel value="Delivery" control={<Radio id='delivery' onClick={this.handleInputChange}/>} label="Delivery" />
+              <FormControlLabel className={classes.typeInput} value="Pickup" control={<Radio className={classes.radioButton} color="primary" id='pickup' onClick={this.handleInputChange}/>} label="Pickup" />
+              <FormControlLabel className={classes.typeInput} value="Delivery" control={<Radio className={classes.radioButton} color="primary" id='delivery' onClick={this.handleInputChange}/>} label="Delivery" />
             </RadioGroup>
           </FormControl>
         </div>
         <div>
-          <Button className={classes.nextButton}onClick={this.submitCustomerInfo}><Link to='/checkout'>Next</Link></Button>
+          <Button className={classes.nextButton}onClick={this.submitCustomerInfo}><Link className={classes.Link} to='/checkout'>Next</Link></Button>
+        </div>
         </div>
       </div>
     );
