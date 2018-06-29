@@ -13,6 +13,7 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import {createMuiTheme} from '@material-ui/core/styles';
 
+
 const CustomTableCell = withStyles(theme => ({
     head: {
         backgroundColor: theme.palette.common.black,
@@ -52,6 +53,9 @@ class Checkout extends Component {
 
     componentDidMount() {
         console.log('hello');
+        console.log(this.props.reduxStore);
+        console.log(this.props.reduxStore.pizzaReducer);
+        
         
     }
 
@@ -68,16 +72,16 @@ class Checkout extends Component {
 
         // real data body
         const body = {
-            customer: this.props.customerReducer.customer, 
-            pizzas: this.props.pizzaReducer.pizza, 
-            order_total: this.props.pizzaReducer.order_total,
-            type: this.props.customerReducer.type }
+            customer: this.props.reduxStore.customerReducer.customer, 
+            pizzas: this.props.reduxStore.pizzaReducer.pizza, 
+            order_total: this.props.reduxStore.pizzaReducer.order_total,
+            type: this.props.reduxStore.customerReducer.type }
         console.log(body);
         
         axios.post('/api/order', body)
         .then((response ) => {
             console.log(response);
-            alert('Order confirmed, thank you for ordering,', this.state.customer.name);
+            alert('Order confirmed, thank you for ordering,', this.props.reduxStore.customerReducer.name);
 
             
         })
@@ -88,11 +92,11 @@ class Checkout extends Component {
             <div>
                 <h1>Prime Pizza</h1>
                 <h3>Step 3: Checkout</h3>
-                <h3>{this.props.customerReducer.type}</h3>
+                <h3>{this.props.reduxStore.customerReducer.type}</h3>
             <p>
-                {this.state.customer.name}<br />
-                {this.state.customer.street_address}<br />
-                {this.state.customer.city}, MN<br />
+                {this.props.reduxStore.customerReducer.name}<br />
+                {this.props.reduxStore.customerReducer.street_address}<br />
+                {this.props.reduxStore.customerReducer.city}, MN<br />
                 
             </p>
 
@@ -105,7 +109,7 @@ class Checkout extends Component {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {this.state.pizza.map((pizza) => {
+                        {this.props.reduxStore.pizzaReducer.menu.map((pizza) => {
                 return <CheckoutItem
                 key = {pizza.name}
                 pizza = {pizza}
@@ -114,7 +118,7 @@ class Checkout extends Component {
                     </TableBody>
                 </Table>
             </Paper>
-            <h1>Total: {this.state.order_total}</h1>
+            <h1>Total: {this.props.reduxStore.pizzaReducer.order_total}</h1>
             <Button color="primary" variant="contained" onClick={this.submitOrder}>Checkout</Button>
             </div>
          )
