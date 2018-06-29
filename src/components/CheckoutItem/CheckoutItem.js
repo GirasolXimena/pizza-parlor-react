@@ -25,9 +25,6 @@ class CheckoutItem extends Component {
                     {this.props.pizza.cost}
                 </td>
                 <td>
-                    <Avatar>{this.props.pizza.quantity}</Avatar>
-                </td>
-                <td>
                     <IconButton onClick={this.minusPizza}><Icon className="material-icons">remove_shopping_cart</Icon></IconButton>
                     {/* <IconButton onClick={this.addPizza}><Icon className="material-icons">add</Icon></IconButton> */}
                 </td>
