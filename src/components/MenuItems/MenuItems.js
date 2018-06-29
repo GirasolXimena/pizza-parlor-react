@@ -9,7 +9,7 @@ class MenuItems extends Component {
   render() {
 
     return (
-      <div className="menu-items">
+      <div>
         <Grid container spacing={24}>
           {this.props.menu.map(menuItem => <MenuItem key={menuItem._id} menuItem={menuItem}/>) }
         </Grid>
