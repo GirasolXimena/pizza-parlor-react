@@ -106,8 +106,8 @@ class Customer extends Component {
               className={classes.methodGroup}
               value={this.state.type}
             >
-              <FormControlLabel className={classes.typeInput} value="Pickup" control={<Radio className={classes.radioButton} id='pickup' onClick={this.handleInputChange}/>} label="Pickup" />
-              <FormControlLabel className={classes.typeInput} value="Delivery" control={<Radio className={classes.radioButton} id='delivery' onClick={this.handleInputChange}/>} label="Delivery" />
+              <FormControlLabel className={classes.typeInput} value="Pickup" control={<Radio className={classes.radioButton} color="primary" id='pickup' onClick={this.handleInputChange}/>} label="Pickup" />
+              <FormControlLabel className={classes.typeInput} value="Delivery" control={<Radio className={classes.radioButton} color="primary" id='delivery' onClick={this.handleInputChange}/>} label="Delivery" />
             </RadioGroup>
           </FormControl>
         </div>
