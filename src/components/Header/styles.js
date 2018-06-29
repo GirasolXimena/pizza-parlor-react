@@ -16,7 +16,16 @@ export const styles = {
         display: 'inline-block',
         color: 'white'
     },
-    cartItem: {
-        display: 'inline'
+    cartLogo: {
+        display: 'inline',
+        color: 'white'
+    },
+    closeButton: {
+        backgroundColor: 'white',
+        color: 'red',
+        display: 'inline',
+        position: 'fixed',
+        top: 10,
+        right: 0
     }
 }
