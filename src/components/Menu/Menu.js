@@ -60,7 +60,7 @@ class Menu extends Component {
         <h1 className="stepName">Step 1: Select Your Pizza</h1>
         <h2 className="orderTotal">Order total: {JSON.stringify(this.props.reduxStore.pizzaReducer.order_total)}</h2>
         <MenuItems menu={menu} />
-        <Button className={classes.nextButton} onClick={this.submitCustomerInfo}><Link className={classes.Link} to='/checkout'>Next</Link></Button>
+        <Button className={classes.nextButton} onClick={this.submitCustomerInfo}><Link className={classes.Link} to='/customer'>Next</Link></Button>
        </div>
        <Table className={classes.table} className={classes.cart}>
         <TableHead>
