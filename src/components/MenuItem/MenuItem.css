@@ -12,7 +12,6 @@
   position: relative;
 }
 .buttons{
-  postion: absolute;
   bottom: 0;
   min-height: 150px;
   max-height: 150px;
@@ -29,4 +28,7 @@
 .img {
   width: 200px;
   display: flex;
+}
+.add-button {
+  margin: 0 auto;
 }

@@ -33,7 +33,7 @@ class MenuItem extends Component {
   render() {
     let item = this.props.menuItem;
     return (
-      <Grid item xl={1} lg={2} md={3} sm={4} xs={12}>
+      <Grid item xl={2} lg={3} md={4} sm={6} xs={12}>
         <div>
           <Card className="card">
             <CardMedia />
@@ -58,12 +58,12 @@ class MenuItem extends Component {
 
             </CardContent>
             <CardActions className="buttons">
-              <Button onClick={this.addItemToCart} size="small" color="primary">
+              <Button className="add-button" onClick={this.addItemToCart} size="small" color="primary">
                 ADD
               </Button>
-              {(item.quantity > 0) && <Button onClick={this.removeAllFromCart} size="small" color="primary" className="controls">
+              {/* {(item.quantity > 0) && <Button onClick={this.removeAllFromCart} size="small" color="primary" className="controls">
                 REMOVE ALL
-              </Button>}
+              </Button>} */}
             </CardActions>
           </Card>
         </div>
