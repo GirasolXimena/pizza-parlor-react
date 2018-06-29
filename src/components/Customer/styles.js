@@ -1,7 +1,7 @@
 export const styles = {
     main: {
         position: 'relative',
-        top: 150
+        top: 100
     },
     customerInput: {
         display: 'block',
