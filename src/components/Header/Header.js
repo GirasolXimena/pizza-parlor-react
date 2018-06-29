@@ -40,7 +40,7 @@ class Header extends Component {
 
     render(){
         const {classes} = this.props;
-        const menu = this.props.pizzaReducer.menu || [] ;
+        const cart = this.props.pizzaReducer.cart || [] ;
         return(
             <AppBar className={classes.header}>
                 <Typography className={classes.projectTitle} variant="display3">Prime Pizza</Typography>
@@ -61,7 +61,7 @@ class Header extends Component {
                             </Button>
                         </DialogActions>
                         <DialogContent>
-                            {menu.map(menuItem => 
+                            {cart.map(menuItem => 
                                 <div className={classes.cartObject}>
                                     <img src={menuItem.image_path} className={classes.cartImage}/>
                                     <h3 className={classes.cartDescription}>{menuItem.name}</h3>
