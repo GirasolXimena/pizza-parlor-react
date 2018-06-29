@@ -27,5 +27,22 @@ export const styles = {
         position: 'fixed',
         top: 10,
         right: 0
+    },
+    cartImage: {
+        maxWidth: 100,
+        display: 'inline'
+    },
+    cartDescription: {
+        margin: 15,
+        display: 'inline',
+        position: 'relative',
+        bottom: 27
+    },
+    cartItemCost: {
+        display: 'inline',
+        float: 'right'
+    },
+    cartTotal: {
+        float: 'right'
     }
 }

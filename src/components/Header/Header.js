@@ -63,9 +63,14 @@ class Header extends Component {
                         </DialogActions>
                         <DialogContent>
                             {menu.map(menuItem => 
-                                <h3>{menuItem.name} {menuItem.cost}</h3>
+                                <div>
+                                    <img src={menuItem.image_path} className={classes.cartImage}/>
+                                    <h3 className={classes.cartDescription}>{menuItem.name}</h3>
+                                    <h3 className={classes.cartItemCost}>{menuItem.cost}</h3>
+                                    <hr/>
+                                </div>
                             )}
-                            <h2>Total: {this.props.pizzaReducer.order_total}</h2>
+                            <h2 className={classes.cartTotal}> Total: {this.props.pizzaReducer.order_total}</h2>
                         </DialogContent>
                         </Dialog>
                 </div>
