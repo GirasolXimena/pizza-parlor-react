@@ -2,9 +2,18 @@ import React, { Component } from 'react';
 import Avatar from '@material-ui/core/Avatar'
 import IconButton from '@material-ui/core/IconButton/IconButton'
 import Icon from '@material-ui/core/Icon/Icon'
+import { connect } from 'react-redux';
+
+const mapToReduxStore = (reduxStore) => {
+    reduxStore
+}
+
 class CheckoutItem extends Component {
-    addPizza = () => this.props.pizza.quantity += 1
-    minusPizza = () => this.props.pizza.quantity -= 1
+
+    minusPizza = () => {
+        const action = {type: 'DELETE_FROM_CART', payload: this.props.pizza._id};
+        this.props.dispatch(action);
+    }
     
     render() { 
         return ( 
@@ -19,12 +28,12 @@ class CheckoutItem extends Component {
                     <Avatar>{this.props.pizza.quantity}</Avatar>
                 </td>
                 <td>
-                    <IconButton onClick={this.minusPizza}><Icon className="material-icons">remove</Icon></IconButton>
-                    <IconButton onClick={this.addPizza}><Icon className="material-icons">add</Icon></IconButton>
+                    <IconButton onClick={this.minusPizza}><Icon className="material-icons">remove_shopping_cart</Icon></IconButton>
+                    {/* <IconButton onClick={this.addPizza}><Icon className="material-icons">add</Icon></IconButton> */}
                 </td>
             </tr>
          )
     }
 }
  
-export default CheckoutItem;
+export default connect(mapToReduxStore)(CheckoutItem);
