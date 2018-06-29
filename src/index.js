@@ -50,7 +50,7 @@ const pizzaReducer = (state = {}, action) => {
             return item._id === action.payload;
         })
         if(currentMenu[idToChange].quantity > 0){
-            currentMenu[idToChange].quantity = 0;
+            currentMenu[idToChange].quantity = currentMenu[idToChange].quantity - 1;
         }
         let itemsInCart = currentMenu
             .filter(item => {

@@ -1,0 +1,4 @@
+@keyframes logoMove {
+    from {bottom: 0;}
+    to {bottom: 0.5rem;}
+}
