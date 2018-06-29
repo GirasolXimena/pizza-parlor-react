@@ -21,8 +21,8 @@ class Header extends Component {
             <AppBar className={classes.header}>
                 <Typography className={classes.projectTitle} variant="display3">Prime Pizza</Typography>
                 <div className={classes.cartContainer}>
-                    <Icon>shopping_cart</Icon>
-                    <p>{this.props.pizzaReducer.order_total == 0 ? 0 : this.props.pizzaReducer.order_total}</p>
+                    <Icon className={classes.cartItem}>shopping_cart</Icon>
+                    <p className={classes.cartItem}>{this.props.pizzaReducer.order_total == 0 ? 0 : this.props.pizzaReducer.order_total}</p>
                 </div>
             </AppBar>
         );

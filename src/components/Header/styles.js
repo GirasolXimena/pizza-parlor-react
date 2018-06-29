@@ -15,5 +15,8 @@ export const styles = {
         top: 15,
         display: 'inline-block',
         color: 'white'
+    },
+    cartItem: {
+        display: 'inline'
     }
 }

@@ -11,8 +11,7 @@ import FormControl from '@material-ui/core/FormControl';
 import Button from '@material-ui/core/Button/Button';
 import Input from '@material-ui/core/Input/Input';
 import {withStyles} from '@material-ui/core';
-import Header from '../Header/Header';
-
+import Typography from '@material-ui/core/Typography/Typography';
 // Styles
 import {styles} from './styles';
 
@@ -70,6 +69,7 @@ class Customer extends Component {
       <div>
         {/* <Header /> */}
         <div className={classes.main}>
+        <Typography variant="display1" className={classes.title}>Step 2: Customer Information</Typography>
         <div className={classes.customerInputForm} noValidate autoComplete='off'>
           <Input
             id="name"

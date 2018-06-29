@@ -11,7 +11,7 @@ export const styles = {
     methodGroup: {
         position: 'fixed',
         right: 250,
-        top: 200
+        top: 250
     },
     nextButton: {
         backgroundColor: 'blue',
@@ -26,6 +26,10 @@ export const styles = {
     Link: {
         color: 'white',
         textDecorationLine: 'none'
+    },
+    title: {
+        float: 'left',
+        margin: 15
     }
 
 }
