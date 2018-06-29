@@ -123,7 +123,7 @@ class Checkout extends Component {
                         <TableRow>
                             <CustomTableCell>Name</CustomTableCell>
                             <CustomTableCell>Cost</CustomTableCell>
-                            <CustomTableCell>Change Order</CustomTableCell>
+                            <CustomTableCell>Delete Pizza</CustomTableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
@@ -137,7 +137,7 @@ class Checkout extends Component {
                 </Table>
             </Paper>
             <h1>Total: {this.props.reduxStore.pizzaReducer.order_total}</h1>
-            <Button color="primary" variant="contained" onClick={this.submitOrder}>Delete Pizza</Button>
+            <Button color="primary" variant="contained" onClick={this.submitOrder}>Confirm</Button>
             </div>
          )
     }
