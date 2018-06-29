@@ -56,6 +56,16 @@ const pizzaReducer = (state = {}, action) => {
             .filter(item => {
                 return item.quantity > 0;
             });
+        let currentCart = state.cart;
+        let indexToDelete = currentCart.findIndex(item => {
+            return item._id === action.payload;
+        })
+        let newCart = [];
+        if(currentCart.length === 1){
+            newCart = [];
+        } else {
+            newCart = currentCart.splice(indexToDelete, 1);
+        }
         let total = 0;
         for(let item of itemsInCart){
             total += (item.cost * item.quantity);
@@ -64,6 +74,9 @@ const pizzaReducer = (state = {}, action) => {
             ...state,
             menu: [
                 ...currentMenu
+            ],
+            cart: [
+                ...newCart
             ],
             order_total: total
         }
