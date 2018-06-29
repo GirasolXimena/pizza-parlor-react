@@ -14,6 +14,6 @@ export const styles = {
         left: 10,
         top: 15,
         display: 'inline-block',
-        color: 'grey'
+        color: 'white'
     }
 }

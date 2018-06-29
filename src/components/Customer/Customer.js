@@ -68,7 +68,7 @@ class Customer extends Component {
     const { classes } = this.props;
     return (
       <div>
-        <Header />
+        {/* <Header /> */}
         <div className={classes.main}>
         <div className={classes.customerInputForm} noValidate autoComplete='off'>
           <Input
@@ -106,13 +106,13 @@ class Customer extends Component {
               className={classes.methodGroup}
               value={this.state.type}
             >
-              <FormControlLabel value="Pickup" control={<Radio id='pickup' onClick={this.handleInputChange}/>} label="Pickup" />
-              <FormControlLabel value="Delivery" control={<Radio id='delivery' onClick={this.handleInputChange}/>} label="Delivery" />
+              <FormControlLabel className={classes.typeInput} value="Pickup" control={<Radio id='pickup' onClick={this.handleInputChange}/>} label="Pickup" />
+              <FormControlLabel className={classes.typeInput} value="Delivery" control={<Radio id='delivery' onClick={this.handleInputChange}/>} label="Delivery" />
             </RadioGroup>
           </FormControl>
         </div>
         <div>
-          <Button className={classes.nextButton}onClick={this.submitCustomerInfo}><Link to='/checkout'>Next</Link></Button>
+          <Button className={classes.nextButton}onClick={this.submitCustomerInfo}><Link className={classes.Link} to='/checkout'>Next</Link></Button>
         </div>
         </div>
       </div>

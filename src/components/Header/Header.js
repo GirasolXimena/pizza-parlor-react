@@ -8,6 +8,7 @@ import {styles} from './styles';
 import Typography from '@material-ui/core/Typography/Typography';
 import AppBar from '@material-ui/core/AppBar/AppBar';
 import Icon from '@material-ui/core/Icon/Icon';
+import Button from '@material-ui/core/Button/Button';
 
 const mapReduxStateToProps = ({pizzaReducer}) => ({
     pizzaReducer
