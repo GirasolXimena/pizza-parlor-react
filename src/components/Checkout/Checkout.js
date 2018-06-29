@@ -99,7 +99,12 @@ class Checkout extends Component {
         if (orderComplete) {
             return <Redirect to='/'/>
         }
-
+        if(!this.props.reduxStore.pizzaReducer.cart) {
+            return(
+                    <Redirect to= '/'/>              
+            )
+        }
+        if(this.props.reduxStore.pizzaReducer.cart) {
         return ( 
             <div>
                 <h1>Prime Pizza</h1>
@@ -123,7 +128,7 @@ class Checkout extends Component {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {this.props.reduxStore.pizzaReducer.menu.map((pizza) => {
+                        {this.props.reduxStore.pizzaReducer.cart.map((pizza) => {
                 return <CheckoutItem
                 key = {pizza.name}
                 pizza = {pizza}
@@ -137,6 +142,7 @@ class Checkout extends Component {
             </div>
          )
     }
+}
 }
  
 export default compose(withStyles(styles),connect(mapReduxStateToProps))(Checkout);
