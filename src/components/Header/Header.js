@@ -3,6 +3,7 @@ import {withStyles, DialogContentText} from '@material-ui/core';
 import {connect} from 'react-redux';
 import {compose} from 'redux';
 import {styles} from './styles';
+import './styles.css';
 
 // Mat-UI Imports
 import Typography from '@material-ui/core/Typography/Typography';
@@ -15,6 +16,7 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Divider from '@material-ui/core/Divider/Divider';
+import {Link} from 'react-router-dom';
 
 const mapReduxStateToProps = ({pizzaReducer}) => ({
     pizzaReducer
@@ -43,9 +45,9 @@ class Header extends Component {
         const cart = this.props.pizzaReducer.cart || [] ;
         return(
             <AppBar className={classes.header}>
-                <Typography className={classes.projectTitle} variant="display3">Prime Pizza</Typography>
+                <Typography className={classes.projectTitle} variant="display3"><Link className={classes.homeLink}to='/'>Prime Pizza</Link></Typography>
                 <div className={classes.cartContainer}>
-                    <IconButton className={classes.cartLogo} onClick={this.handleClickOpen}><Icon>shopping_cart</Icon></IconButton>
+                    <IconButton  onClick={this.handleClickOpen}><Icon className={classes.cartLogo}>shopping_cart</Icon></IconButton>
                     <p className={classes.cartLogo}>{this.props.pizzaReducer.order_total == 0 ? 0 : this.props.pizzaReducer.order_total}</p>
                         <Dialog
                         className={classes.dialog}

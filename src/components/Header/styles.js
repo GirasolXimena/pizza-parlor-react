@@ -18,7 +18,13 @@ export const styles = {
     },
     cartLogo: {
         display: 'inline',
-        color: 'white'
+        color: 'white',
+        '&:hover':{
+            position: 'relative',
+            color: 'lightBlue',
+            animationName: 'logoMove',
+            animationDuration: '1s'
+        }
     },
     closeButton: {
         backgroundColor: 'white',
@@ -47,5 +53,16 @@ export const styles = {
     },
     cartObject: {
         margin: 20
+    },
+    homeLink: {
+        color: 'white',
+        textDecorationLine: 'none',
+        backgroundColor: '#07349D',
+        '&:hover':{
+            color: 'lightBlue',
+            position: 'relative',
+            animationName: 'logoMove',
+            animationDuration: '1s'
+        }
     }
 }
