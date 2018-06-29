@@ -14,8 +14,7 @@ import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import MenuItem from '../MenuItem/MenuItem';
-import Grid from '@material-ui/core/Grid/Grid';
+import Divider from '@material-ui/core/Divider/Divider';
 
 const mapReduxStateToProps = ({pizzaReducer}) => ({
     pizzaReducer
@@ -41,7 +40,7 @@ class Header extends Component {
 
     render(){
         const {classes} = this.props;
-        const menu = this.props.pizzaReducer.menu || [] ;
+        const cart = this.props.pizzaReducer.cart || [] ;
         return(
             <AppBar className={classes.header}>
                 <Typography className={classes.projectTitle} variant="display3">Prime Pizza</Typography>
@@ -62,12 +61,12 @@ class Header extends Component {
                             </Button>
                         </DialogActions>
                         <DialogContent>
-                            {menu.map(menuItem => 
-                                <div>
+                            {cart.map(menuItem => 
+                                <div className={classes.cartObject}>
                                     <img src={menuItem.image_path} className={classes.cartImage}/>
                                     <h3 className={classes.cartDescription}>{menuItem.name}</h3>
                                     <h3 className={classes.cartItemCost}>{menuItem.cost}</h3>
-                                    <hr/>
+                                    <Divider inset />
                                 </div>
                             )}
                             <h2 className={classes.cartTotal}> Total: {this.props.pizzaReducer.order_total}</h2>

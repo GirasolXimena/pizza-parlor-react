@@ -44,5 +44,8 @@ export const styles = {
     },
     cartTotal: {
         float: 'right'
+    },
+    cartObject: {
+        margin: 20
     }
 }

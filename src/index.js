@@ -12,7 +12,8 @@ const pizzaReducer = (state = {}, action) => {
         console.log('add to menu reducer');
         return {
             ...state,
-            menu: action.payload
+            menu: action.payload,
+            cart: []
         }
     } else if(action.type === 'ADD_TO_CART'){
         console.log('adding to cart');
@@ -20,6 +21,7 @@ const pizzaReducer = (state = {}, action) => {
         let idToChange = currentMenu.findIndex(item => {
             return item._id === action.payload;
         })
+        console.log(idToChange);
         currentMenu[idToChange].quantity = currentMenu[idToChange].quantity + 1;
         let itemsInCart = currentMenu
             .filter(item => {
@@ -29,10 +31,15 @@ const pizzaReducer = (state = {}, action) => {
         for(let item of itemsInCart){
             total += (item.cost * item.quantity);
         }
+        console.log(state);
         return {
             ...state,
             menu: [
                 ...currentMenu
+            ],
+            cart: [
+                ...state.cart, 
+                currentMenu[idToChange]
             ],
             order_total: total
         }
