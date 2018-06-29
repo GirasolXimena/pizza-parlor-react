@@ -16,6 +16,7 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import MenuItem from '../MenuItem/MenuItem';
 import Grid from '@material-ui/core/Grid/Grid';
+import Divider from '@material-ui/core/Divider/Divider';
 
 const mapReduxStateToProps = ({pizzaReducer}) => ({
     pizzaReducer
@@ -63,11 +64,11 @@ class Header extends Component {
                         </DialogActions>
                         <DialogContent>
                             {menu.map(menuItem => 
-                                <div>
+                                <div className={classes.cartObject}>
                                     <img src={menuItem.image_path} className={classes.cartImage}/>
                                     <h3 className={classes.cartDescription}>{menuItem.name}</h3>
                                     <h3 className={classes.cartItemCost}>{menuItem.cost}</h3>
-                                    <hr/>
+                                    <Divider inset />
                                 </div>
                             )}
                             <h2 className={classes.cartTotal}> Total: {this.props.pizzaReducer.order_total}</h2>
